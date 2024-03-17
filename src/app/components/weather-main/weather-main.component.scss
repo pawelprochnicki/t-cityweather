@@ -1,0 +1,11 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+:host {
+  @include d-f-column;
+  @include d-f-center;
+
+  padding: calc(2 * #{$layout-separation});
+
+  background-color: pink;
+}
