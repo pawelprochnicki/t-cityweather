@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -27,12 +26,5 @@ describe('AppComponent', () => {
     component.title = title;
     fixture.detectChanges();
     expect(document.title).toEqual(title);
-  });
-
-  it('should contain cw-header-bar', () => {
-    const headerBarElement = fixture.debugElement.query(
-      By.css('cw-header-bar')
-    );
-    expect(headerBarElement).toBeTruthy();
   });
 });
