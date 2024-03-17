@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'yw-root',
+  selector: 'cw-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Your Weather';
+  public title = 'City Weather';
 
   constructor(private titleService: Title) {}
 

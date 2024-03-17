@@ -1,0 +1,56 @@
+// main colors
+$color-white: #ffffff;
+$color-default: #343a40;
+$color-default-light-1: #737373;
+$color-default-light-2: #bababa;
+$color-default-light-3: #fefefe;
+$color-sky-light: #4facf7;
+$color-sky-dark: #0070ff;
+
+// gradients
+$gradient-layout: linear-gradient(to bottom, $color-sky-dark, $color-sky-light);
+
+// shadows
+$box-shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// dimensions
+$width-content-max: 1024px;
+$layout-separation: 1rem;
+
+$height-header-desktop: 60px;
+$height-header-tablet: 50px;
+$height-header-mobile: 40px;
+$height-header-decoration-desktop: 80px;
+$height-header-decoration-tablet: 70px;
+$height-header-decoration-mobile: 60px;
+
+$height-footer: 50px;
+$height-footer-decoration-desktop: 90px;
+$height-footer-decoration-tablet: 70px;
+$height-footer-decoration-mobile: 50px;
+
+$height-min-main-desktop: calc(
+  100vh - #{$height-header-desktop} - #{$height-header-decoration-desktop} - #{$height-footer} -
+    #{$height-footer-decoration-desktop} - #{$layout-separation} * 2
+);
+$height-min-main-tablet: calc(
+  100vh - #{$height-header-tablet} - #{$height-header-decoration-tablet} - #{$height-footer} -
+    #{$height-footer-decoration-tablet} - #{$layout-separation} * 2
+);
+$height-min-main-mobile: calc(
+  100vh - #{$height-header-mobile} - #{$height-header-decoration-mobile} - #{$height-footer} -
+    #{$height-footer-decoration-mobile}
+);
+
+// radius
+$radius-layout-desktop: 12px;
+$radius-layout-tablet: 8px;
+$radius-layout-mobile: 0px;
+
+// font family
+$font-family-main: "Nunito Sans";
+$font-family-auxiliary: "Roboto";
+
+// responsive breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;

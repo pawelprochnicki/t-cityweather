@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "t-venturerock": {
+    "t-cityweather": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -12,17 +12,22 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "yw",
+      "prefix": "cw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/t-venturerock",
+            "outputPath": "dist/t-cityweather",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "assets": [
               "src/assets/favicon.ico",
               "src/assets"
@@ -69,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "t-venturerock:build:production"
+              "browserTarget": "t-cityweather:build:production"
             },
             "development": {
-              "browserTarget": "t-venturerock:build:development"
+              "browserTarget": "t-cityweather:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "t-venturerock:build"
+            "browserTarget": "t-cityweather:build"
           }
         },
         "test": {

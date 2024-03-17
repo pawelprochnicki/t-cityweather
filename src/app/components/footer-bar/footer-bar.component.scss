@@ -1,0 +1,33 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+:host {
+  @include d-f-column;
+  @include d-f-center;
+  @include width-layout-main;
+  @include round-bottom-corners-responsive;
+
+  color: $color-default;
+}
+
+.cw-footer {
+  @include d-f-column;
+  @include d-i-evenly;
+  @include round-bottom-corners-responsive;
+
+  height: $height-footer;
+  width: 100%;
+  background-color: #4facf7;
+  font-size: 1rem;
+
+  &__link {
+    color: $color-sky-dark;
+  }
+
+  &__decoration {
+    @include add-decoration("wave.svg");
+    @include set-height-footer-decoration-responsive;
+
+    width: 100%;
+  }
+}

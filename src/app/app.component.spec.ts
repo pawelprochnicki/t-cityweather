@@ -1,31 +1,38 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+    TestBed.configureTestingModule({
       declarations: [AppComponent],
-    }).compileComponents();
+    });
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'Your Weather'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Your Weather');
+  it(`should have as title 'City Weather'`, () => {
+    expect(component.title).toEqual('City Weather');
   });
 
-  it('should have router-outlet', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should set the title as the page title on initialization', () => {
+    const title = 'City Weather';
+    component.title = title;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('router-outlet')).toBeTruthy();
+    expect(document.title).toEqual(title);
+  });
+
+  it('should contain cw-header-bar', () => {
+    const headerBarElement = fixture.debugElement.query(
+      By.css('cw-header-bar')
+    );
+    expect(headerBarElement).toBeTruthy();
   });
 });

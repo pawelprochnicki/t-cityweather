@@ -1,0 +1,31 @@
+@import "./variables";
+
+html {
+  font-size: 10px;
+}
+
+body,
+html {
+  font-family: $font-family-auxiliary, sans-serif;
+  color: $color-default;
+  background-color: $color-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-main, sans-serif;
+  font-weight: 900;
+}
+
+::placeholder,
+::-moz-placeholder,
+::-webkit-input-placeholder,
+.mat-input-element::placeholder,
+.mat-select-placeholder {
+  color: $color-default-light-1;
+  opacity: 0.7;
+}

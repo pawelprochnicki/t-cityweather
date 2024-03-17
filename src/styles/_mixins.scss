@@ -1,0 +1,125 @@
+@import "./variables";
+@mixin d-f-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin d-f-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin d-f-center {
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin d-i-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin d-i-around {
+  justify-content: space-around;
+  align-items: center;
+}
+
+@mixin d-i-evenly {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@mixin full-width-height {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin width-layout-main {
+  max-width: $width-content-max;
+  width: 100%;
+}
+
+@mixin set-height-header-responsive {
+  height: $height-header-desktop;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    height: $height-header-tablet;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: $height-header-mobile;
+  }
+}
+
+@mixin set-height-header-decoration-responsive {
+  height: $height-header-decoration-desktop;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    height: $height-header-decoration-tablet;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: $height-header-decoration-mobile;
+  }
+}
+
+@mixin set-min-height-main-responsive {
+  height: $height-min-main-desktop;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    height: $height-min-main-tablet;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: $height-min-main-mobile;
+  }
+}
+
+@mixin set-height-footer-decoration-responsive {
+  height: $height-footer-decoration-desktop;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    height: $height-footer-decoration-tablet;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    height: $height-footer-decoration-mobile;
+  }
+}
+
+@mixin round-top-corners-responsive {
+  border-start-end-radius: $radius-layout-desktop;
+  border-start-start-radius: $radius-layout-desktop;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    border-start-end-radius: $radius-layout-tablet;
+    border-start-start-radius: $radius-layout-tablet;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    border-start-end-radius: $radius-layout-mobile;
+    border-start-start-radius: $radius-layout-mobile;
+  }
+}
+
+@mixin round-bottom-corners-responsive {
+  border-end-end-radius: $radius-layout-desktop;
+  border-end-start-radius: $radius-layout-desktop;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    border-end-end-radius: $radius-layout-tablet;
+    border-end-start-radius: $radius-layout-tablet;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    border-end-end-radius: $radius-layout-mobile;
+    border-end-start-radius: $radius-layout-mobile;
+  }
+}
+
+@mixin add-decoration($imageFile) {
+  background-image: url("../../../assets/images/#{$imageFile}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+}

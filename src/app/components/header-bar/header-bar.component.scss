@@ -1,0 +1,41 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+:host {
+  @include d-f-column;
+  @include d-f-center;
+  @include width-layout-main;
+  @include round-bottom-corners-responsive;
+
+  color: $color-default;
+}
+
+.cw-title {
+  font-size: 3.6rem;
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  .cw-title {
+    font-size: 2.4rem;
+  }
+}
+
+.cw-header {
+  @include d-f-row;
+  @include d-f-center;
+  @include full-width-height;
+  @include round-bottom-corners-responsive;
+  @include set-height-header-responsive;
+
+  background-color: $color-default-light-3;
+}
+
+.cw-header__decoration {
+  @include set-height-header-decoration-responsive;
+  @include round-top-corners-responsive;
+  @include add-decoration("clouds.svg");
+
+  height: $height-header-decoration-desktop;
+  width: 100%;
+  background-color: $color-sky-light;
+}
