@@ -60,7 +60,6 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
         .getWeatherForCity(params.cityName, params.units)
         .subscribe({
           next: (data) => {
-            console.log(data);
             this.weatherData = data;
             this.cdr.markForCheck();
           },
