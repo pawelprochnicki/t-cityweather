@@ -1,1 +1,10 @@
-<p>{{ weatherData?.daily | json }}</p>
+<h2>Forecast</h2>
+
+<div class="cw-forecast-container" *ngIf="weatherData">
+  <ng-container *ngFor="let forecast of weatherData.daily">
+    <cw-weather-forecast-item
+      [forecast]="forecast"
+      [units]="units"
+    ></cw-weather-forecast-item>
+  </ng-container>
+</div>

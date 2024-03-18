@@ -1,0 +1,42 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+:host {
+  @include d-f-column;
+  @include d-f-center;
+  @include d-i-evenly;
+
+  height: auto;
+  width: 100px;
+  box-shadow: $box-shadow-default;
+  margin: 1rem;
+  border-radius: $radius-default;
+}
+
+.cw-forecast-date {
+  display: block;
+  width: 90%;
+  text-align: center;
+
+  background-color: $color-default-light-2;
+  padding: 0.3rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  border-radius: $radius-default;
+}
+
+.cw-forecast-params {
+  @include d-f-column;
+
+  &__item {
+    @include d-f-row;
+    @include d-f-center;
+
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  & .material-icons {
+    font-size: 1.4rem;
+  }
+}

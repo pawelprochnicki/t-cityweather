@@ -11,6 +11,7 @@ import { FooterBarComponent } from './components/footer-bar/footer-bar.component
 import { WeatherMainComponent } from './components/weather-main/weather-main.component';
 import { WeatherDisplayComponent } from './components/weather-display/weather-display.component';
 import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
+import { WeatherForecastItemComponent } from './components/weather-forecast-item/weather-forecast-item.component';
 
 ReactiveFormsModule;
 
@@ -22,6 +23,7 @@ ReactiveFormsModule;
     WeatherMainComponent,
     WeatherDisplayComponent,
     WeatherForecastComponent,
+    WeatherForecastItemComponent,
   ],
   imports: [
     BrowserModule,

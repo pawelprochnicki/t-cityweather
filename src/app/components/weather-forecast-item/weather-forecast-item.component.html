@@ -1,0 +1,32 @@
+<div class="cw-forecast-date">
+  {{ forecast?.dt * 1000 | date : "dd.MM.yyyy" }}
+</div>
+
+<div class="cw-forecast-params">
+  <div class="cw-forecast-params__item">
+    <ng-container *ngIf="units === 'metric'">
+      <i class="material-icons">thermostat</i>
+      <span>{{ forecast.temp.day }}&deg;C</span>
+    </ng-container>
+    <ng-container *ngIf="units === 'imperial'">
+      <span>{{ forecast?.temp?.day }}&deg;F</span>
+    </ng-container>
+  </div>
+  <div class="cw-forecast-params__item">
+    <i class="material-icons">dew_point</i>
+    <span>{{ forecast?.humidity }}%</span>
+  </div>
+  <div class="cw-forecast-params__item">
+    <ng-container *ngIf="units === 'metric'">
+      <i class="material-icons">air</i>
+      <span>{{ forecast.wind_speed }}&nbsp;km/h</span>
+    </ng-container>
+    <ng-container *ngIf="units === 'imperial'">
+      <span>{{ forecast?.wind_speed }}&nbsp;mph</span>
+    </ng-container>
+  </div>
+  <div class="cw-forecast-params__item">
+    <i class="material-icons">north</i>
+    <span>{{ forecast?.wind_deg }}&deg;</span>
+  </div>
+</div>

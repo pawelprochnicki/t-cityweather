@@ -8,6 +8,7 @@ import { WeatherData } from '../../models/weatherdata.model';
 })
 export class WeatherForecastComponent implements OnInit {
   @Input() weatherData: WeatherData | null = null;
+  @Input() units: string | null = null;
 
   constructor() {}
 
