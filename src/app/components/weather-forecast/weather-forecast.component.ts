@@ -2,13 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { WeatherData } from '../../models/weatherdata.model';
 
 @Component({
-  selector: 'cw-weather-display',
-  templateUrl: './weather-display.component.html',
-  styleUrls: ['./weather-display.component.scss'],
+  selector: 'cw-weather-forecast',
+  templateUrl: './weather-forecast.component.html',
+  styleUrls: ['./weather-forecast.component.scss'],
 })
-export class WeatherDisplayComponent implements OnInit {
+export class WeatherForecastComponent implements OnInit {
   @Input() weatherData: WeatherData | null = null;
-  @Input() units: string | null = null;
 
   constructor() {}
 

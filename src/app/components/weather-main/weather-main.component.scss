@@ -30,7 +30,7 @@
       min-width: 80px;
       margin-right: 1rem;
       font-size: 1.4rem;
-      font-weight: 500;
+      font-weight: 400;
     }
   }
 
@@ -61,15 +61,19 @@
   .cw-ask-weather-form {
     &__inputs-group {
       @include d-f-column;
+      @include d-i-evenly;
     }
 
     &__input {
+      @include d-f-column;
       margin: 1rem 0;
     }
 
     &__input--label {
-      position: absolute;
-      left: -90px;
+      justify-content: flex-start;
+      align-self: flex-start;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
     }
   }
 }

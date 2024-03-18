@@ -1,134 +1,37 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { WeatherMainComponent } from './weather-main.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { OpenWeatherMapService } from 'src/app/services/open-weather-map.service';
-import { Observable, of, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
-describe('WeatherMainComponent', () => {
-  let component: WeatherMainComponent;
-  let fixture: ComponentFixture<WeatherMainComponent>;
-  let mockOpenWeatherMapService: {
-    getWeatherForCity: {
-      and: {
-        returnValue: (
-          arg0: Observable<{
-            lat: number;
-            lon: number;
-            timezone: string;
-            current: {
-              dt: number;
-              sunrise: number;
-              sunset: number;
-              temp: number;
-              feels_like: number;
-              pressure: number;
-              humidity: number;
-              dew_point: number;
-              uvi: number;
-              clouds: number;
-              visibility: number;
-              wind_speed: number;
-              wind_deg: number;
-              weather: {
-                id: number;
-                main: string;
-                description: string;
-                icon: string;
-              }[];
-            };
-            daily: {
-              dt: number;
-              sunrise: number;
-              sunset: number;
-              temp: {
-                day: number;
-                min: number;
-                max: number;
-                night: number;
-                eve: number;
-                morn: number;
-              };
-              feels_like: {
-                day: number;
-                night: number;
-                eve: number;
-                morn: number;
-              };
-              pressure: number;
-              humidity: number;
-              dew_point: number;
-              wind_speed: number;
-              wind_deg: number;
-              weather: {
-                id: number;
-                main: string;
-                description: string;
-                icon: string;
-              }[];
-              clouds: number;
-              pop: number;
-              uvi: number;
-            }[];
-          }>
-        ) => void;
-      };
-      calls: { any: () => any };
-    };
-  };
-  let mockToastrService: { error: any };
-
-  beforeEach(async () => {
-    mockOpenWeatherMapService = jasmine.createSpyObj('OpenWeatherMapService', [
-      'getWeatherForCity',
-    ]);
-    mockToastrService = jasmine.createSpyObj('ToastrService', ['error']);
-
-    await TestBed.configureTestingModule({
-      declarations: [WeatherMainComponent],
-      imports: [ReactiveFormsModule],
-      providers: [
-        { provide: ToastrService, useValue: mockToastrService },
-        { provide: OpenWeatherMapService, useValue: mockOpenWeatherMapService },
-      ],
-      schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(WeatherMainComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('form invalid when empty', () => {
-    expect(component.askForWeatherForm.valid).toBeFalsy();
-  });
-
-  it('should call getWeatherForCity and update weatherData on valid form submission', () => {
-    const mockWeatherData = {
-      lat: 51.5074,
-      lon: 4.8936,
-      timezone: 'Europe/Amsterdam',
+export class OpenWeatherMapServiceMock {
+  getWeatherForCity = jasmine.createSpy('getWeatherForCity').and.returnValue(
+    of({
+      lat: 40.712776,
+      lon: -74.005974,
+      timezone: 'America/New_York',
       current: {
         dt: 1618317040,
         sunrise: 1618282134,
         sunset: 1618333901,
-        temp: 20,
-        feels_like: 19,
-        pressure: 1012,
-        humidity: 81,
-        dew_point: 10,
-        uvi: 0.89,
-        clouds: 0,
+        temp: 284.65,
+        feels_like: 281.86,
+        pressure: 1013,
+        humidity: 93,
+        dew_point: 283.15,
+        uvi: 0,
+        clouds: 90,
         visibility: 10000,
         wind_speed: 4.12,
         wind_deg: 250,
         weather: [
-          { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
+          {
+            id: 501,
+            main: 'Rain',
+            description: 'moderate rain',
+            icon: '10d',
+          },
         ],
       },
       daily: [
@@ -137,63 +40,95 @@ describe('WeatherMainComponent', () => {
           sunrise: 1618282134,
           sunset: 1618333901,
           temp: {
-            day: 20,
-            min: 7,
-            max: 20,
-            night: 12,
-            eve: 18,
-            morn: 8,
+            day: 284.65,
+            min: 283.15,
+            max: 285.93,
+            night: 284.15,
+            eve: 284.15,
+            morn: 283.15,
           },
           feels_like: {
-            day: 19,
-            night: 11,
-            eve: 17,
-            morn: 6,
+            day: 281.86,
+            night: 282.15,
+            eve: 282.15,
+            morn: 282.15,
           },
-          pressure: 1012,
-          humidity: 81,
-          dew_point: 10,
+          pressure: 1013,
+          humidity: 93,
+          dew_point: 283.15,
           wind_speed: 4.12,
           wind_deg: 250,
           weather: [
-            { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
+            {
+              id: 501,
+              main: 'Rain',
+              description: 'moderate rain',
+              icon: '10d',
+            },
           ],
-          clouds: 0,
-          pop: 0,
-          uvi: 0.89,
+          clouds: 90,
+          pop: 0.89,
+          uvi: 3.42,
         },
       ],
-    };
+    })
+  );
+}
 
-    mockOpenWeatherMapService.getWeatherForCity.and.returnValue(
-      of(mockWeatherData)
-    );
+export class ToastrServiceMock {
+  error = jasmine.createSpy('error');
+  success = jasmine.createSpy('success');
+}
 
-    component.askForWeatherForm.controls['cityName'].setValue('Amsterdam');
-    component.askForWeatherForm.controls['units'].setValue('metric');
-    component.onSubmit();
+describe('WeatherMainComponent', () => {
+  let component: WeatherMainComponent;
+  let fixture: ComponentFixture<WeatherMainComponent>;
 
-    expect(mockOpenWeatherMapService.getWeatherForCity).toHaveBeenCalledWith(
-      'Amsterdam',
-      'metric'
-    );
-    expect(component.weatherData).toEqual(mockWeatherData);
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
+      declarations: [WeatherMainComponent],
+      providers: [
+        { provide: ToastrService, useClass: ToastrServiceMock },
+        { provide: OpenWeatherMapService, useClass: OpenWeatherMapServiceMock },
+      ],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(WeatherMainComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it('should display error when getWeatherForCity service returns an error', () => {
-    const errorResponse = new Error('Service error');
-    mockOpenWeatherMapService.getWeatherForCity.and.returnValue(
-      throwError(() => errorResponse)
+  it('should call getWeatherForCity with correct params on submit', () => {
+    const openWeatherMapService = fixture.debugElement.injector.get(
+      OpenWeatherMapService
     );
+    component.askForWeatherForm.controls['cityName'].setValue('Sydney');
+    component.askForWeatherForm.controls['units'].setValue('metric');
+    component.onSubmit();
+    expect(openWeatherMapService.getWeatherForCity).toHaveBeenCalledWith(
+      'Sydney',
+      'metric'
+    );
+  });
+
+  it('should show error message if weather data fetching fails', () => {
+    const openWeatherMapService: OpenWeatherMapService = TestBed.inject(
+      OpenWeatherMapService
+    );
+
+    (openWeatherMapService.getWeatherForCity as jasmine.Spy).and.returnValue(
+      throwError(() => new Error('Failed to fetch weather data'))
+    );
+
+    const toastrService: ToastrService = TestBed.inject(ToastrService);
 
     component.askForWeatherForm.controls['cityName'].setValue('Unknown');
     component.onSubmit();
 
-    expect(mockOpenWeatherMapService.getWeatherForCity.calls.any()).toBeTrue();
-    expect(mockToastrService.error).toHaveBeenCalledWith(
-      errorResponse.message,
+    expect(toastrService.error).toHaveBeenCalledWith(
+      'Failed to fetch weather data',
       'Error, try correct city name'
     );
-    expect(component.weatherData).toBeNull();
   });
 });

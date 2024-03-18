@@ -13,3 +13,9 @@ Used Weather API: www.openweathermap.org
 ## Test Application
 
 - in terminal in project folder run `npm run test`
+
+## Notice
+
+I've prepare only 4 weather params. Because it will be time-consuming process to put every. I would like to give an example of code and my approach to solve problems. If there's a need for the more params give me a hint/message.
+
+Paweł Próchnicki

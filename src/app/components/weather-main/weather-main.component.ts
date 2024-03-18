@@ -54,8 +54,9 @@ export class WeatherMainComponent implements OnInit, OnDestroy {
       if (this.weatherDataSubscription) {
         this.weatherDataSubscription.unsubscribe();
       }
-
       this.weatherDataSubscription = this.openWeatherMapService
+        //
+        //
         .getWeatherForCity(params.cityName, params.units)
         .subscribe({
           next: (data) => {

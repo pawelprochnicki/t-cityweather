@@ -1,2 +1,95 @@
 @import "../../../styles/variables";
 @import "../../../styles/mixins";
+
+:host {
+  @include d-f-column;
+  @include d-f-center;
+
+  margin: 1rem 2rem;
+  padding-top: 1rem;
+  width: 80%;
+
+  border-top: 1px solid $color-default-light-2;
+}
+
+.cw-weather {
+  @include d-f-column;
+  @include d-f-center;
+
+  &-description {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.cw-weather-params {
+  @include d-f-row;
+  @include d-f-center;
+  @include d-i-evenly;
+
+  flex-wrap: wrap;
+  margin-top: 3rem;
+
+  &__item {
+    @include d-f-column;
+    @include d-f-center;
+    justify-content: center;
+
+    width: 140px;
+    height: 100px;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: $radius-default;
+    box-shadow: $box-shadow-default;
+
+    &--value {
+      display: flex;
+      align-items: center;
+      height: -webkit-fill-available;
+      font-size: 2rem;
+    }
+
+    & .wind-direction {
+      height: 60px;
+    }
+  }
+
+  .temp-very-cold {
+    background-color: $color-temp-very-cold;
+  }
+  .temp-cold {
+    background-color: $color-temp-cold;
+  }
+  .temp-temperately {
+    background-color: $color-temp-temperate;
+  }
+  .temp-hot {
+    background-color: $color-temp-hot;
+  }
+  .temp-very-hot {
+    background-color: $color-temp-very-hot;
+  }
+
+  .humid-very-low {
+    background-color: $color-humid-very-low;
+  }
+  .humid-low {
+    background-color: $color-humid-low;
+  }
+  .humid-moderate {
+    background-color: $color-humid-moderate;
+  }
+  .humid-high {
+    background-color: $color-humid-high;
+  }
+  .humid-very-high {
+    background-color: $color-humid-very-high;
+  }
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  .cw-weather-params {
+    @include d-f-column;
+    justify-content: center;
+  }
+}

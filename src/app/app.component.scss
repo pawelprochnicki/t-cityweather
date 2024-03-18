@@ -16,11 +16,5 @@
   @include width-layout-main;
   @include set-min-height-main-responsive;
 
-  border: 1px solid transparent;
-  border-image: linear-gradient(to bottom, $color-default-light-2, white) 1
-    stretch;
-
-  @media screen and (max-width: $breakpoint-mobile) {
-    border: none;
-  }
+  overflow: scroll;
 }

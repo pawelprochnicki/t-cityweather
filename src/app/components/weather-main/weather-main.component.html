@@ -28,4 +28,7 @@
     Get Weather
   </button>
 </form>
-<cw-weather-display [weatherData]="weatherData"></cw-weather-display>
+<cw-weather-display
+  [weatherData]="weatherData"
+  [units]="askForWeatherForm.value.units"
+></cw-weather-display>

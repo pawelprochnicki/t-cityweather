@@ -7,6 +7,18 @@ $color-default-light-3: #fefefe;
 $color-sky-light: #4facf7;
 $color-sky-dark: #0070ff;
 
+$color-temp-very-cold: #0048ba;
+$color-temp-cold: #0096ff;
+$color-temp-temperate: #008000;
+$color-temp-hot: #ffd700;
+$color-temp-very-hot: #ff4500;
+
+$color-humid-very-low: #f4a460;
+$color-humid-low: #f0e68c;
+$color-humid-moderate: #98fb98;
+$color-humid-high: #008000;
+$color-humid-very-high: #20b2aa;
+
 // gradients
 $gradient-layout: linear-gradient(to bottom, $color-sky-dark, $color-sky-light);
 

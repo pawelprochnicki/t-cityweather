@@ -1,1 +1,87 @@
-<div *ngIf="weatherData">test</div>
+<div class="cw-weather" *ngIf="weatherData">
+  <h2>
+    Weather for:
+    {{ weatherData.current.dt * 1000 | date : "dd.MM.yyyy, HH:mm" }}
+  </h2>
+  <p class="cw-weather-description">
+    Weather description: {{ weatherData.current.weather[0].description }}
+  </p>
+  <div class="cw-weather-params">
+    <!-- temperature -->
+    <div
+      class="cw-weather-params__item"
+      [ngClass]="{
+        'temp-very-cold': weatherData.current.temp < 0,
+        'temp-cold':
+          weatherData.current.temp >= 0 && weatherData.current.temp < 10,
+        'temp-moderately':
+          weatherData.current.temp >= 10 && weatherData.current.temp < 20,
+        'temp-hot':
+          weatherData.current.temp >= 20 && weatherData.current.temp < 30,
+        'temp-very-hot': weatherData.current.temp >= 30
+      }"
+    >
+      <div class="cw-weather-params__item--title">Temperature</div>
+      <div class="cw-weather-params__item--value">
+        <i class="material-icons">thermostat</i>
+        <ng-container *ngIf="units === 'metric'">
+          <span>{{ weatherData.current.temp }}&deg;C</span>
+        </ng-container>
+        <ng-container *ngIf="units === 'imperial'">
+          <span>{{ weatherData.current.temp }}&deg;F</span>
+        </ng-container>
+      </div>
+    </div>
+    <!-- humidity -->
+    <div
+      class="cw-weather-params__item"
+      [ngClass]="{
+        'humid-very-low':
+          weatherData.current.humidity === 0 &&
+          weatherData.current.humidity <= 20,
+        'humid-low':
+          weatherData.current.humidity >= 20 &&
+          weatherData.current.humidity <= 40,
+        'humid-moderate':
+          weatherData.current.humidity >= 41 &&
+          weatherData.current.humidity < 60,
+        'humid-high':
+          weatherData.current.humidity >= 61 &&
+          weatherData.current.humidity < 80,
+        'humid-very-high': weatherData.current.humidity >= 81
+      }"
+    >
+      <div class="cw-weather-params__item--title">Humidity</div>
+      <div class="cw-weather-params__item--value">
+        <i class="material-icons">dew_point</i>
+        <span>{{ weatherData.current.humidity }}%</span>
+      </div>
+    </div>
+    <!-- wind speed -->
+    <div class="cw-weather-params__item">
+      <div class="cw-weather-params__item--title">Wind speed</div>
+      <div class="cw-weather-params__item--value">
+        <i class="material-icons">air</i>
+        <ng-container *ngIf="units === 'metric'">
+          <span>{{ weatherData.current.wind_speed }}km/h</span>
+        </ng-container>
+        <ng-container *ngIf="units === 'imperial'">
+          <span>{{ weatherData.current.wind_speed }}m/h</span>
+        </ng-container>
+      </div>
+    </div>
+    <!-- wind direction -->
+    <div class="cw-weather-params__item">
+      <div class="cw-weather-params__item--title">Wind direction</div>
+      <div
+        class="cw-weather-params__item--value wind-direction"
+        [ngStyle]="{
+          transform: 'rotate(' + weatherData.current.wind_deg + 'deg)'
+        }"
+      >
+        <i class="material-icons">north</i>
+      </div>
+    </div>
+  </div>
+  <cw-weather-forecast [weatherData]="weatherData"></cw-weather-forecast>
+</div>
