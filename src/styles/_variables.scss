@@ -12,6 +12,7 @@ $gradient-layout: linear-gradient(to bottom, $color-sky-dark, $color-sky-light);
 
 // shadows
 $box-shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow-input: 0 0 0 2px rgba(100, 181, 246, 0.3);
 
 // dimensions
 $width-content-max: 1024px;
@@ -43,6 +44,7 @@ $height-min-main-mobile: calc(
 );
 
 // radius
+$radius-default: 4px;
 $radius-layout-desktop: 12px;
 $radius-layout-tablet: 8px;
 $radius-layout-mobile: 0px;

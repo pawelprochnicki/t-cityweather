@@ -1,0 +1,15 @@
+@import "./variables";
+
+input[type="text"],
+select {
+  font-size: 1.4rem;
+  padding: 10px;
+  border: 1px solid $color-default-light-2;
+  border-radius: $radius-default;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: $color-sky-light;
+  box-shadow: $box-shadow-default;
+}

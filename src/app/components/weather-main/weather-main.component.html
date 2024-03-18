@@ -1,1 +1,31 @@
-<p>weather-main works!</p>
+<form
+  class="cw-ask-weather-form"
+  [formGroup]="askForWeatherForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="cw-ask-weather-form__inputs-group">
+    <div class="cw-ask-weather-form__input">
+      <label class="cw-ask-weather-form__input--label" for="cityName"
+        >City Name:</label
+      >
+      <input formControlName="cityName" id="cityName" type="text" />
+    </div>
+    <div class="cw-ask-weather-form__input">
+      <label class="cw-ask-weather-form__input--label" for="units"
+        >Units:</label
+      >
+      <select formControlName="units" id="units">
+        <option value="metric">Metric</option>
+        <option value="imperial">Imperial</option>
+      </select>
+    </div>
+  </div>
+  <button
+    [disabled]="!askForWeatherForm.valid"
+    class="cw-ask-weather-form__button"
+    type="submit"
+  >
+    Get Weather
+  </button>
+</form>
+<cw-weather-display [weatherData]="weatherData"></cw-weather-display>

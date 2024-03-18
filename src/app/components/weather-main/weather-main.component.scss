@@ -4,8 +4,72 @@
 :host {
   @include d-f-column;
   @include d-f-center;
+}
 
-  padding: calc(2 * #{$layout-separation});
+.cw-ask-weather-form {
+  @include d-f-column;
+  @include d-i-evenly;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  width: 100%;
 
-  background-color: pink;
+  &__inputs-group {
+    @include d-f-row;
+    @include d-f-center;
+    width: 100%;
+  }
+
+  &__input {
+    @include d-f-row;
+    @include d-f-center;
+    position: relative;
+
+    &--label {
+      display: flex;
+      justify-content: flex-end;
+      min-width: 80px;
+      margin-right: 1rem;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+  }
+
+  &__button {
+    background-color: $color-sky-light;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $color-white;
+    padding: 14px 24px;
+    margin: 18px 0;
+    border: none;
+    border-radius: $radius-default;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-sky-dark;
+    }
+
+    &:disabled {
+      background-color: $color-default-light-2;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  .cw-ask-weather-form {
+    &__inputs-group {
+      @include d-f-column;
+    }
+
+    &__input {
+      margin: 1rem 0;
+    }
+
+    &__input--label {
+      position: absolute;
+      left: -90px;
+    }
+  }
 }
