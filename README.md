@@ -3,6 +3,11 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
 Used Weather API: www.openweathermap.org
 
+## Use API
+
+If you want to get weather data from my app, please register https://openweathermap.org/api
+and subscribe One Call API 3.0. Generate your own API key and write it in environment.ts file.
+
 ## Run Application
 
 - clone repo
@@ -13,9 +18,3 @@ Used Weather API: www.openweathermap.org
 ## Test Application
 
 - in terminal in project folder run `npm run test`
-
-## Notice
-
-I've prepare only 4 weather params. Because it will be time-consuming process to put every. I would like to give an example of code and my approach to solve problems. If there's a need for the more params give me a hint/message.
-
-Paweł Próchnicki
